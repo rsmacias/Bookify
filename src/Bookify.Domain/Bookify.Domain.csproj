@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Apartments\" />
+    <Folder Include="Abstractions\" />
   </ItemGroup>
 
 </Project>
