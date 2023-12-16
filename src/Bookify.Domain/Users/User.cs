@@ -1,4 +1,5 @@
 ﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Users.Events;
 
 namespace Bookify.Domain.Users;
 
@@ -24,9 +25,7 @@ public sealed class User : Entity
     {
         var user = new User(Guid.NewGuid(), firstName, lastName, email);
 
-        // TODO:  
-        // - Put some other implementation details that I don't want to expose outside of this entity.
-        // - Include some side effects that don't naturally belong inside of a constructor - DOMAIN EVENTS
+        user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id)); // This domain event could include some side effects like sending an welcome email to the recent user created.
 
         return user;
     }
