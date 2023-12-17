@@ -1,4 +1,5 @@
 ﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Apartments;
 using Bookify.Domain.Bookings.Events;
 using Bookify.Domain.Shared;
 
@@ -45,18 +46,20 @@ public sealed class Booking : Entity
     public DateTime? CancelledOnUtc { get; private set; }
 
     public static Booking Reserve(
-        Guid apartmentId, 
+        Apartment apartment, 
         Guid userId, 
         DateRange duration, 
         DateTime utcNow,
-        PricingDetails pricingDetails  // <= Calculations like this that don't naturally fit the responsibility of the entity, need to be performed by a Domain Service. 
-        )
+        PricingService pricingService  // By passing the service to the entity the entity has more control to orchestrate its workflow logic 
+    )
     {
+        var pricingDetails = pricingService.CalculatePrice(apartment, duration); // <= Calculations like this that don't naturally fit the responsibility of the entity, need to be performed by a Domain Service. 
+
         // Since part of the properties are missing because their values calculation are out of the scope of the entity,
         // we implement the Static Factory Pattern to create the entity after those properties values are available.
         var booking = new Booking(
             Guid.NewGuid(),
-            apartmentId,
+            apartment.Id,
             userId,
             duration,
             pricingDetails.PriceForPeriod,
@@ -68,6 +71,8 @@ public sealed class Booking : Entity
         );
 
         booking.RaiseDomainEvent(new BookingReservedDomainEvent(booking.Id));
+
+        apartment.LastBookedOnUtc = utcNow;
 
         return booking;
     }
