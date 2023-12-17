@@ -9,7 +9,7 @@
   <ItemGroup>
     <Folder Include="Apartments\" />
     <Folder Include="Abstractions\" />
-    <Folder Include="Bookings\" />
+    <Folder Include="Bookings\Events\" />
     <Folder Include="Users\Events\" />
   </ItemGroup>
 

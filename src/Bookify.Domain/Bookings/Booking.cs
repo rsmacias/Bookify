@@ -1,4 +1,5 @@
 ﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Bookings.Events;
 using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Bookings;
@@ -65,6 +66,8 @@ public sealed class Booking : Entity
             BookingStatus.Reserved,
             utcNow
         );
+
+        booking.RaiseDomainEvent(new BookingReservedDomainEvent(booking.Id));
 
         return booking;
     }
