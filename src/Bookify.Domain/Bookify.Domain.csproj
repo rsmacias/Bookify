@@ -10,7 +10,7 @@
     <Folder Include="Apartments\" />
     <Folder Include="Abstractions\" />
     <Folder Include="Bookings\Events\" />
-    <Folder Include="Reviews\" />
+    <Folder Include="Reviews\Events\" />
     <Folder Include="Users\Events\" />
   </ItemGroup>
 

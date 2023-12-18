@@ -1,7 +1,6 @@
 ﻿using Bookify.Domain.Abstractions;
-using Bookify.Domain.Apartments;
 using Bookify.Domain.Bookings;
-using Bookify.Domain.Users;
+using Bookify.Domain.Reviews.Events;
 
 namespace Bookify.Domain.Reviews;
 
@@ -41,7 +40,7 @@ public sealed class Review : Entity
 
         var review = new Review(Guid.NewGuid(), booking.ApartmentId, booking.Id, userId, rating, comment, utcNow);
 
-        // TODO: Raise a new Domain Event
+        review.RaiseDomainEvent(new ReviewCreatedDomainEvent(review.Id));
 
         return  review;
     }
