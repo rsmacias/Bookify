@@ -31,14 +31,14 @@ public sealed class Review : Entity
     public Comment Comment { get; private set; }
     public DateTime CreateOnUtc { get; private set; }
 
-    public static Review Create(Booking booking, Guid userId, Rating rating, Comment comment, DateTime utcNow)
+    public static Review Create(Booking booking, Rating rating, Comment comment, DateTime utcNow)
     {
         if (booking.Status != BookingStatus.Completed)
         {
             throw new ApplicationException("Uncompleted bookings can not be reviewed.");
         }
 
-        var review = new Review(Guid.NewGuid(), booking.ApartmentId, booking.Id, userId, rating, comment, utcNow);
+        var review = new Review(Guid.NewGuid(), booking.ApartmentId, booking.Id, booking.UserId, rating, comment, utcNow);
 
         review.RaiseDomainEvent(new ReviewCreatedDomainEvent(review.Id));
 
