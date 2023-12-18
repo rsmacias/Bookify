@@ -1,8 +1,29 @@
-﻿namespace Bookify.Domain.Reviews;
+﻿using Bookify.Domain.Abstractions;
 
-public record Rating(int Value)
+namespace Bookify.Domain.Reviews;
+
+public sealed record Rating
 {
-    public Rating Up() => new(this.Value + 1);
+    public static readonly Error Invalid = new("Rating.Invalid", "The rating is invalid");
 
-    public Rating Down() => this.Value == 0? this : new(this.Value - 1);
+    private Rating(int value)
+    {
+        Value = value;
+    }
+
+    public int Value { get; init; }
+    private const int MinLimit = 1;
+    private const int MaxLimit = 5;
+
+    public static Result<Rating> Create(int value)
+    {
+        if (value < MinLimit || value > MaxLimit)
+            return Result.Failure<Rating>(Invalid);
+
+        return new Rating(value);
+    }
+
+    public Result<Rating> Increase() => Create(this.Value + 1);
+
+    public Result<Rating> Decrease() => Create(this.Value - 1);
 }
