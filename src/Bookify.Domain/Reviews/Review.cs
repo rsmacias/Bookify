@@ -14,7 +14,12 @@ public sealed class Review : Entity
         DateTime createOnUtc
     ) : base(id)
     {
-        
+        ApartmentId = apartmentId;
+        BookingId = bookingId;
+        UserId = userId;
+        Rating = rating;
+        Comment = comment;
+        CreateOnUtc = createOnUtc;
     }
 
     public Guid ApartmentId { get; private set; }
