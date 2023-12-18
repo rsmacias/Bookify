@@ -31,11 +31,11 @@ public sealed class Review : Entity
     public Comment Comment { get; private set; }
     public DateTime CreateOnUtc { get; private set; }
 
-    public static Review Create(Booking booking, Rating rating, Comment comment, DateTime utcNow)
+    public static Result<Review> Create(Booking booking, Rating rating, Comment comment, DateTime utcNow)
     {
         if (booking.Status != BookingStatus.Completed)
         {
-            throw new ApplicationException("Uncompleted bookings can not be reviewed.");
+            return Result.Failure<Review>(ReviewErrors.NotEligible);
         }
 
         var review = new Review(Guid.NewGuid(), booking.ApartmentId, booking.Id, booking.UserId, rating, comment, utcNow);
