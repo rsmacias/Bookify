@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Bookify.Domain\Bookify.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstractions\Messaging\" />
+  </ItemGroup>
+
 </Project>
