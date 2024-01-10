@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.28" />
     <PackageReference Include="MediatR" Version="12.2.0" />
   </ItemGroup>
 
@@ -18,6 +19,7 @@
     <Folder Include="Abstractions\Messaging\" />
     <Folder Include="Abstractions\Clock\" />
     <Folder Include="Abstractions\Email\" />
+    <Folder Include="Abstractions\Data\" />
     <Folder Include="Bookings\ReserveBooking\" />
   </ItemGroup>
 
