@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="Abstractions\Messaging\" />
     <Folder Include="Abstractions\Clock\" />
+    <Folder Include="Abstractions\Email\" />
     <Folder Include="Bookings\ReserveBooking\" />
   </ItemGroup>
 
