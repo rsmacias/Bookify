@@ -16,6 +16,8 @@ public static class DependencyInjection
             configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
 
             configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+
+            configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
 
         services.AddTransient<PricingService>();

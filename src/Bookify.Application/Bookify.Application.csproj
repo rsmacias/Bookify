@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.28" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
   </ItemGroup>
@@ -21,7 +22,6 @@
     <Folder Include="Abstractions\Clock\" />
     <Folder Include="Abstractions\Email\" />
     <Folder Include="Abstractions\Data\" />
-    <Folder Include="Abstractions\Behaviors\" />
     <Folder Include="Bookings\ReserveBooking\" />
   </ItemGroup>
 
