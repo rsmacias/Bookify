@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Bookify.Application\Bookify.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Clock\" />
+  </ItemGroup>
+
 </Project>
