@@ -1,3 +1,6 @@
+using Bookify.Application;
+using Bookify.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,9 @@ builder.Services.AddControllers();
 // Swagger support:
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApplication(); // wire up Application Layer
+builder.Services.AddInfrastructure(builder.Configuration); // wire up Infrastructure Layer
 
 var app = builder.Build();
 
