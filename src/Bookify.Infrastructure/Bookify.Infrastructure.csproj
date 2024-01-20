@@ -19,6 +19,7 @@
     <Folder Include="Clock\" />
     <Folder Include="Email\" />
     <Folder Include="Configurations\" />
+    <Folder Include="Data\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 
