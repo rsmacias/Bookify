@@ -7,6 +7,10 @@ using Bookify.Domain.Users;
 
 namespace Bookify.Application.Bookings.ReserveBooking;
 
+/// <summary>
+/// Domain Event Handler which is registered/raise in the Domain layer by the Booking entity during the reservation,
+/// and will be triggered through the UnitOfWork pattern in the Infrastructure layer when executing the SaveChangesAsync method.
+/// </summary>
 internal sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBookingCommand, Guid>
 {
     private readonly IUserRepository _userRepository;
