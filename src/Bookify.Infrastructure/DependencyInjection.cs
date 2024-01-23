@@ -34,9 +34,9 @@ public static class DependencyInjection
         });
 
         // Repositories
-        services.AddScoped<IUserRepository, IUserRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
-        services.AddScoped<IApartmentRepository, IApartmentRepository>();
+        services.AddScoped<IApartmentRepository, ApartmentRepository>();
 
         services.AddScoped<IBookingRepository, BookingRepository>();
 
